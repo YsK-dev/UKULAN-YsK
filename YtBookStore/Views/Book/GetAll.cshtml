@@ -1,0 +1,47 @@
+﻿@model IEnumerable<YtBookStore.Models.Domain.Book>
+@{
+}
+
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-dark" href="/Book/Add">+ EKLE</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Kayıtlı Proje</h3>
+
+            <table  class="table table-stripped table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th>Proje İsmi</th>
+                        <th>Ders</th>
+                        <th>Değer</th>
+                        <th>Maliyet</th>
+                        <th>Öğrenci</th>
+                        <th>Proje Yürütücü Hoca</th>
+                        <th>Tıkla</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model){
+                    <tr>
+                            <td>@item.Title</td>
+                            <td>@item.GenreName</td>
+                            <td>@item.Isbn</td>
+                            <td>@item.TotalPages</td>
+                            <td>@item.AuthorName</td>
+                            <td>@item.PublisherName</td>
+                        <td>
+                                <a class="btn btn-success" href="/Book/Update?id=@item.Id"><i class="bi bi-pen"></i></a> |
+                                <a class="btn btn-danger" onclick="return window.confirm('Are you sure?')" href="/Book/Delete?id=@item.Id"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
